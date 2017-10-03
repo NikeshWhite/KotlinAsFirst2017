@@ -35,14 +35,11 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  */
 fun ageDescription(age: Int): String {
 
-    if ((age in 5..20) || (age in 105..120) || (age % 10 in 5..9) || (age % 10 == 0))
-        return ("$age лет")
-
-    else if (age % 10 == 1)
-        return ("$age год")
-
-    else
-        return ("$age года")
+    when {
+        age in 5..20 || age in 105..120 || age % 10 in 5..9 || age % 10 == 0 -> return ("$age лет")
+        age % 10 == 1 -> return ("$age год")
+        else -> return ("$age года")
+    }
 }
 
 /**
@@ -69,14 +66,14 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
                        rookX1: Int, rookY1: Int,
                        rookX2: Int, rookY2: Int): Int {
 
-    if ((rookX1 == kingX || rookY1 == kingY) &&
-            (rookX2 == kingX || rookY2 == kingY)) return 3
+    when {
+        (rookX1 == kingX || rookY1 == kingY) &&
+                (rookX2 == kingX || rookY2 == kingY) -> return 3
+        (rookX2 == kingX || rookY2 == kingY) -> return 2
+        (rookX1 == kingX || rookY1 == kingY) -> return 1
+        else -> return 0
+    }
 
-    else if (rookX2 == kingX || rookY2 == kingY) return 2
-
-    else if (rookX1 == kingX || rookY1 == kingY) return 1
-
-    else return 0
 }
 
 /**
@@ -91,10 +88,7 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
  */
 fun rookOrBishopThreatens(kingX: Int, kingY: Int,
                           rookX: Int, rookY: Int,
-                          bishopX: Int, bishopY: Int) {
-
-
-}
+                          bishopX: Int, bishopY: Int): Int = TODO()
 
 /**
  * Простая
@@ -114,17 +108,16 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
+
+
 fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
 
-    if ((c <= b && d <= b) && (a <= c && a <= d)) return (d - c)
-
-    else if ((a <= d && b <= d) && (c <= a && c <= b)) return (b - a)
-
-    else if ((b >= c && b <= d) && (a <= c && a <= d)) return (b - c)
-
-    else if ((d >= a && d <= b) && (c <= a && c <= b)) return (d - a)
-
-    else return (-1)
-
+    when {
+        (c <= b && d <= b) && (a <= c && a <= d) -> return (d - c)
+        (a <= d && b <= d) && (c <= a && c <= b) -> return (b - a)
+        (b >= c && b <= d) && (a <= c && a <= d) -> return (b - c)
+        (d >= a && d <= b) && (c <= a && c <= b) -> return (d - a)
+        else -> return -1
+    }
 
 }
