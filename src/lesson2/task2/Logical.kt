@@ -49,7 +49,7 @@ fun circleInside(x1: Double, y1: Double, r1: Double,
     when {
         r1 == r2 && x1 == x2 && y1 == y2 -> return true
         r2 - r1 >= (x2 - x1) + (y2 - y1) -> return true
-        r1 > r2 -> return false
+        /*r1 > r2 -> return false*/
         else -> return false
     }
 }
