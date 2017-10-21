@@ -1,4 +1,5 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson3.task1
 
 import java.lang.Math.*
@@ -37,7 +38,7 @@ fun isPrime(n: Int): Boolean {
  */
 fun isPerfect(n: Int): Boolean {
     var sum = 1
-    for (m in 2..n/2) {
+    for (m in 2..n / 2) {
         if (n % m > 0) continue
         sum += m
         if (sum > n) break
@@ -68,13 +69,13 @@ fun digitNumber(n: Int): Int {
     var count = 0
     var num = n
 
-        while (num > 0) {
-            num /= 10
-            count++
-        }
+    while (num > 0) {
+        num /= 10
+        count++
+    }
 
-        if (n == 0) return 1
-    else return count
+    return if (n == 0) 1
+    else count
 }
 
 /**
@@ -83,7 +84,7 @@ fun digitNumber(n: Int): Int {
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO ()
+fun fib(n: Int): Int = TODO()
 
 /**
  * Простая
@@ -91,7 +92,7 @@ fun fib(n: Int): Int = TODO ()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO ()
+fun lcm(m: Int, n: Int): Int = TODO()
 
 /**
  * Простая
@@ -104,7 +105,7 @@ fun minDivisor(n: Int): Int {
 
     if (isPrime(n)) return n
 
-    for (i in 2..n/2) {
+    for (i in 2..n / 2) {
         if (n % i == 0) {
             Divisor = i
             break
@@ -124,7 +125,7 @@ fun maxDivisor(n: Int): Int {
 
     if (isPrime(n)) return 1
 
-    for (i in n/2 downTo  1) {
+    for (i in n / 2 downTo 1) {
         if (n % i == 0) {
             Divisor = i
             break
@@ -132,6 +133,7 @@ fun maxDivisor(n: Int): Int {
     }
     return Divisor
 }
+
 /**
  * Простая
  *
@@ -148,7 +150,7 @@ fun isCoPrime(m: Int, n: Int): Boolean = TODO()
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO ()
+fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
 
 
 /**
@@ -193,7 +195,7 @@ fun isPalindrome(n: Int): Boolean = TODO()
  * Например, 54 и 323 состоят из разных цифр, а 111 и 0 из одинаковых.
  */
 
-fun hasDifferentDigits(n: Int): Boolean = TODO ()
+fun hasDifferentDigits(n: Int): Boolean = TODO()
 
 
 /**
