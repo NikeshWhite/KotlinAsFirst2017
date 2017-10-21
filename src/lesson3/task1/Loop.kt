@@ -2,6 +2,7 @@
 package lesson3.task1
 
 import java.lang.Math.*
+import lesson1.task1.*
 
 /**
  * Пример
@@ -97,15 +98,40 @@ fun lcm(m: Int, n: Int): Int = TODO ()
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+
+    var Divisor = 0
+
+    if (isPrime(n)) return n
+
+    for (i in 2..n/2) {
+        if (n % i == 0) {
+            Divisor = i
+            break
+        }
+    }
+    return Divisor
+}
 
 /**
  * Простая
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int = TODO()
+fun maxDivisor(n: Int): Int {
 
+    var Divisor = 1
+
+    if (isPrime(n)) return 1
+
+    for (i in n/2 downTo  1) {
+        if (n % i == 0) {
+            Divisor = i
+            break
+        }
+    }
+    return Divisor
+}
 /**
  * Простая
  *
@@ -122,7 +148,8 @@ fun isCoPrime(m: Int, n: Int): Boolean = TODO()
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean = TODO ()
+
 
 /**
  * Средняя
@@ -165,25 +192,10 @@ fun isPalindrome(n: Int): Boolean = TODO()
  * Для заданного числа n определить, содержит ли оно различающиеся цифры.
  * Например, 54 и 323 состоят из разных цифр, а 111 и 0 из одинаковых.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
-/*{
 
-    var i = 0
-    var j = 0
+fun hasDifferentDigits(n: Int): Boolean = TODO ()
 
-    while (n > 0) {
-        i = n % 10
-        j = n / 10 % 10
-        if (i == j) {
-            return false
-        }
-        else {
-            n /= 100
-        }
-    }
-    return true
-}
-*/
+
 /**
  * Сложная
  *
