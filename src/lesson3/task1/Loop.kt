@@ -69,7 +69,7 @@ fun digitNumber(n: Int): Int {
     var count = 0
     var num = n
 
-    while (num > 0) {
+    while (num != 0) {
         num /= 10
         count++
     }
