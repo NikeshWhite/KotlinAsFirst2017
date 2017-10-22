@@ -2,6 +2,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import lesson3.task1.isPrime
 
 /**
  * Пример
@@ -113,8 +114,11 @@ fun abs(v: List<Double>): Double = TODO()
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+fun mean(list: MutableList<Double>): Double {
 
+    return if (list.isEmpty()) 0.0
+    else list.sum() / list.size
+}
 /**
  * Средняя
  *
@@ -123,7 +127,15 @@ fun mean(list: List<Double>): Double = TODO()
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun center(list: MutableList<Double>): MutableList<Double> = TODO()
+fun center(list: MutableList<Double>): MutableList<Double> {
+
+    val average = mean(list)
+
+    if (list.isNotEmpty()) {
+        for (i in 0 until list.size) list[i] -= average
+    }
+    return list
+}
 
 /**
  * Средняя
@@ -163,7 +175,25 @@ fun accumulate(list: MutableList<Double>): MutableList<Double> = TODO()
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
  */
-fun factorize(n: Int): List<Int> = TODO()
+fun factorize(n: Int): List<Int> {
+
+    var num = n
+    var del = 0
+    val list = mutableListOf<Int>()
+
+    while (num > 0) {
+        for (i in 1..n) {
+            if (isPrime(i) && num % i == 0) {
+                list.add(i)
+                del = i
+                break
+            }
+        }
+        num /= del
+    }
+
+    return list
+}
 
 /**
  * Сложная
