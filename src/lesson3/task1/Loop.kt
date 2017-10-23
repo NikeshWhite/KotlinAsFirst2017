@@ -101,17 +101,17 @@ fun lcm(m: Int, n: Int): Int = TODO()
  */
 fun minDivisor(n: Int): Int {
 
-    var Divisor = 0
+    var divisor = 0
 
     if (isPrime(n)) return n
 
     for (i in 2..n / 2) {
         if (n % i == 0) {
-            Divisor = i
+            divisor = i
             break
         }
     }
-    return Divisor
+    return divisor
 }
 
 /**
@@ -121,17 +121,17 @@ fun minDivisor(n: Int): Int {
  */
 fun maxDivisor(n: Int): Int {
 
-    var Divisor = 1
+    var divisor = 1
 
     if (isPrime(n)) return 1
 
     for (i in n / 2 downTo 1) {
         if (n % i == 0) {
-            Divisor = i
+            divisor = i
             break
         }
     }
-    return Divisor
+    return divisor
 }
 
 /**
