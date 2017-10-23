@@ -178,22 +178,26 @@ fun accumulate(list: MutableList<Double>): MutableList<Double> = TODO()
 fun factorize(n: Int): List<Int> {
 
     var num = n
-    var delitel = 0
+    var k = 1
     val list = mutableListOf<Int>()
 
-    while (num > 0) {
-        for (i in 1..n) {
-            if (isPrime(i) && num % i == 0) {
-                list.add(i)
-                delitel = i
-                break
+    while (k <= num) {
+        k += 1
+
+        if (isPrime(n)) {
+            list += n
+            break
+        }
+
+        else {
+            if ((isPrime(k)) && num % k == 0) {
+                num /= k
+                list += k
+                k = 1
             }
         }
-        num /= delitel
     }
-
     return list
-
 }
 
 /**
