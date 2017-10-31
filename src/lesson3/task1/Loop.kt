@@ -177,7 +177,24 @@ fun cos(x: Double, eps: Double): Double = TODO()
  * Поменять порядок цифр заданного числа n на обратный: 13478 -> 87431.
  * Не использовать строки при решении задачи.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+
+    var num = n
+    var answer = 0.0
+    var m: Int
+
+    val stepen = digitNumber(n)
+
+    while (num > 0) {
+        for (i in stepen downTo 1) {
+            m = num % 10
+            answer += m * pow(10.0, i-1.toDouble())
+            num /= 10
+        }
+    }
+
+    return answer.toInt()
+}
 
 /**
  * Средняя
