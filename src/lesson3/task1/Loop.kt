@@ -105,7 +105,7 @@ fun minDivisor(n: Int): Int {
 
     if (isPrime(n)) return n
 
-    for (i in 2..n / 2) {
+    for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
         if (n % i == 0) {
             divisor = i
             break
@@ -125,7 +125,7 @@ fun maxDivisor(n: Int): Int {
 
     if (isPrime(n)) return 1
 
-    for (i in n / 2 downTo 1) {
+    for (i in n/2 downTo 1) {
         if (n % i == 0) {
             divisor = i
             break
@@ -185,13 +185,11 @@ fun revert(n: Int): Int {
 
     val stepen = digitNumber(n)
 
-    while (num > 0) {
         for (i in stepen downTo 1) {
             m = num % 10
             answer += m * pow(10.0, i-1.toDouble())
             num /= 10
         }
-    }
 
     return answer.toInt()
 }
@@ -212,8 +210,10 @@ fun isPalindrome(n: Int): Boolean = TODO()
  * Например, 54 и 323 состоят из разных цифр, а 111 и 0 из одинаковых.
  */
 
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
 
+    return n != revert(n)
+}
 
 /**
  * Сложная
