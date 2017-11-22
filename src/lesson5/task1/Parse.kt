@@ -68,33 +68,32 @@ fun main(args: Array<String>) {
  */
 fun dateStrToDigit(str: String): String {
 
-    val parts = str.split (" ")
+    val parts = str.split(" ")
 
     val day: String
     val month: String
     val year: String
 
-    val mas = listOf( "", "января", "февраля", "марта", "апреля", "мая", "июня",
-                        "июля", "августа", "сентября", "октября", "ноября", "декабря")
+    val mas = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
+            "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
 
-        if (parts.size == 3) {
-
-            if ((parts[0].toInt() in 1..31) && (parts[2].toInt() in Int.MIN_VALUE..Int.MAX_VALUE)) {
-
-                day = parts[0]
-                year = parts[2]
-
-                if (parts[1] in mas) {
-
-                    month = (mas.indexOf(parts[1])).toString()
-                } else return ""
-            } else return ""
-        } else return ""
-    }
-        catch (e: NumberFormatException) {
+        if (parts.size != 3)
             return ""
+
+        if (parts[0].toInt() !in 1..31)
+            return ""
+
+        if (parts[1] !in mas)
+            return ""
+
+        day = parts[0]
+        year = parts[2]
+        month = (mas.indexOf(parts[1]) + 1).toString()
+
+    } catch (e: NumberFormatException) {
+        return ""
     }
 
     return String.format("%02d.%02d.%d", day.toInt(), month.toInt(), year.toInt())
@@ -108,32 +107,32 @@ fun dateStrToDigit(str: String): String {
  * При неверном формате входной строки вернуть пустую строку
  */
 fun dateDigitToStr(digital: String): String {
-    val parts = digital.split (".")
+
+    val parts = digital.split(".")
 
     val day: String
     val month: String
     val year: String
 
-    val mas = listOf( "", "января", "февраля", "марта", "апреля", "мая", "июня",
+    val mas = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
             "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
 
-        if (parts.size == 3) {
+        if (parts.size != 3)
+            return ""
 
-            if ((parts[0].toInt() in 1..31) && (parts[2].toInt() in Int.MIN_VALUE..Int.MAX_VALUE)) {
+        if (parts[0].toInt() !in 1..31)
+            return ""
 
-                day = parts[0]
-                year = parts[2]
+        if (parts[1].toInt() !in 1..12)
+            return ""
 
-                if (parts[1].toInt() in 1..12) {
+        day = parts[0]
+        year = parts[2]
+        month = (mas[parts[1].toInt() - 1])
 
-                    month = (mas[parts[1].toInt()])
-                } else return ""
-            } else return ""
-        } else return ""
-    }
-    catch (e: NumberFormatException) {
+    } catch (e: NumberFormatException) {
         return ""
     }
 
@@ -275,3 +274,4 @@ fun fromRoman(roman: String): Int = TODO()
  *
  */
 fun computeDeviceCells(cells: Int, commands: String, limit: Int): List<Int> = TODO()
+
