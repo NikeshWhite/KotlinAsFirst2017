@@ -74,7 +74,7 @@ fun dateStrToDigit(str: String): String {
     val month: String
     val year: String
 
-    val mas = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
+    val mas = listOf( "", "января", "февраля", "марта", "апреля", "мая", "июня",
                         "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
@@ -88,7 +88,7 @@ fun dateStrToDigit(str: String): String {
 
                 if (parts[1] in mas) {
 
-                    month = (mas.indexOf(parts[1]) + 1).toString()
+                    month = (mas.indexOf(parts[1])).toString()
                 } else return ""
             } else return ""
         } else return ""
@@ -114,7 +114,7 @@ fun dateDigitToStr(digital: String): String {
     val month: String
     val year: String
 
-    val mas = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
+    val mas = listOf( "", "января", "февраля", "марта", "апреля", "мая", "июня",
             "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
@@ -128,7 +128,7 @@ fun dateDigitToStr(digital: String): String {
 
                 if (parts[1].toInt() in 1..12) {
 
-                    month = (parts.indexOf(mas[1]+1)).toString()
+                    month = (mas[parts[1].toInt()])
                 } else return ""
             } else return ""
         } else return ""
@@ -137,7 +137,7 @@ fun dateDigitToStr(digital: String): String {
         return ""
     }
 
-    return String.format("%02d %s %d", day.toInt(), month, year.toInt())
+    return String.format("%d %s %d", day.toInt(), month, year.toInt())
 }
 
 /**
