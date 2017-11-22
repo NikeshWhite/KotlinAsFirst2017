@@ -125,7 +125,7 @@ fun maxDivisor(n: Int): Int {
 
     if (isPrime(n)) return 1
 
-    for (i in n/2 downTo 1) {
+    for (i in n/2 downTo Math.sqrt(n.toDouble()).toInt()) {
         if (n % i == 0) {
             divisor = i
             break
@@ -183,13 +183,13 @@ fun revert(n: Int): Int {
     var answer = 0.0
     var m: Int
 
-    val stepen = digitNumber(n)
+    val c = digitNumber(n)
 
-        for (i in stepen downTo 1) {
-            m = num % 10
-            answer += m * pow(10.0, i-1.toDouble())
-            num /= 10
-        }
+    for (i in c downTo 1) {
+        m = num % 10
+        answer += m * pow(10.0, i - 1.toDouble())
+        num /= 10
+    }
 
     return answer.toInt()
 }
