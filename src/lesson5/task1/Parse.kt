@@ -78,13 +78,10 @@ fun dateStrToDigit(str: String): String {
             "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
-
         if (parts.size != 3)
             return ""
-
         if (parts[0].toInt() !in 1..31)
             return ""
-
         if (parts[1] !in mas)
             return ""
 
@@ -118,13 +115,10 @@ fun dateDigitToStr(digital: String): String {
             "июля", "августа", "сентября", "октября", "ноября", "декабря")
 
     try {
-
         if (parts.size != 3)
             return ""
-
         if (parts[0].toInt() !in 1..31)
             return ""
-
         if (parts[1].toInt() !in 1..12)
             return ""
 
@@ -210,19 +204,28 @@ fun firstDuplicateIndex(str: String): Int = TODO()
  * или пустую строку при нарушении формата строки.
  * Все цены должны быть положительными
  */
-fun mostExpensive(description: String): String = TODO()/*{
+fun mostExpensive(description: String): String {
 
-    val parts = description.split ("; ", " ")
-    var max: Double11
+    val parts = description.split("; ")
 
-    try {
+    var result = ""
+    var max = 0.0
 
+    return try {
+        for (i in 0 until parts.size) {
+
+            val partsSecond = parts[i].split(" ")
+
+            if (partsSecond[1].toDouble() >= max) {
+                max = partsSecond[1].toDouble()
+                result = partsSecond[0]
+            }
+        }
+        result
+    } catch (e: IndexOutOfBoundsException) {
+        ""
     }
-    catch (e: NumberFormatException) {
-
-    }
-
-}*/
+}
 
 /**
  * Сложная

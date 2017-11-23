@@ -101,10 +101,7 @@ fun lcm(m: Int, n: Int): Int = TODO()
  */
 fun minDivisor(n: Int): Int {
 
-    var divisor = 0
-
-
-    if (isPrime(n)) return n
+    var divisor = n
 
     for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
         if (n % i == 0) {
