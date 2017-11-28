@@ -199,7 +199,7 @@ fun revert(n: Int): Int {
  * первая цифра равна последней, вторая -- предпоследней и так далее.
  * 15751 -- палиндром, 3653 -- нет.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean = n == revert(n)
 
 /**
  * Средняя
@@ -208,10 +208,8 @@ fun isPalindrome(n: Int): Boolean = TODO()
  * Например, 54 и 323 состоят из разных цифр, а 111 и 0 из одинаковых.
  */
 
-fun hasDifferentDigits(n: Int): Boolean {
+fun hasDifferentDigits(n: Int): Boolean = TODO()
 
-    return n != revert(n)
-}
 
 /**
  * Сложная
