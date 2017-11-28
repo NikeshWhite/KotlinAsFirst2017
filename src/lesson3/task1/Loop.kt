@@ -101,15 +101,12 @@ fun lcm(m: Int, n: Int): Int = TODO()
  */
 fun minDivisor(n: Int): Int {
 
-    var divisor = n
-
     for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
         if (n % i == 0) {
-            divisor = i
-            break
+            return i
         }
     }
-    return divisor
+    return n
 }
 
 /**
@@ -119,17 +116,14 @@ fun minDivisor(n: Int): Int {
  */
 fun maxDivisor(n: Int): Int {
 
-    var divisor = 1
-
     if (isPrime(n)) return 1
 
     for (i in n/2 downTo Math.sqrt(n.toDouble()).toInt()) {
         if (n % i == 0) {
-            divisor = i
-            break
+            return i
         }
     }
-    return divisor
+    return n
 }
 
 /**
@@ -178,18 +172,13 @@ fun cos(x: Double, eps: Double): Double = TODO()
 fun revert(n: Int): Int {
 
     var num = n
-    var answer = 0.0
-    var m: Int
+    var answer = 0
 
-    val c = digitNumber(n)
-
-    for (i in c downTo 1) {
-        m = num % 10
-        answer += m * pow(10.0, i - 1.toDouble())
+    while (num > 0) {
+        answer = answer * 10 + num % 10
         num /= 10
     }
-
-    return answer.toInt()
+    return answer
 }
 
 /**
@@ -199,7 +188,7 @@ fun revert(n: Int): Int {
  * первая цифра равна последней, вторая -- предпоследней и так далее.
  * 15751 -- палиндром, 3653 -- нет.
  */
-fun isPalindrome(n: Int): Boolean = n.toString() == revert(n).toString()
+fun isPalindrome(n: Int): Boolean = revert(n) == n
 
 /**
  * Средняя
