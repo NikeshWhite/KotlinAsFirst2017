@@ -80,9 +80,6 @@ fun angleInRadian(grad: Int, min: Int, sec: Int): Double {
     return a + b + c
 }
 
-//Нет решения
-
-
 /**
  * Тривиальная
  *

@@ -174,7 +174,15 @@ class Line private constructor(val b: Double, val angle: Double) {
  *
  * Построить прямую по отрезку
  */
-fun lineBySegment(s: Segment): Line = TODO()
+fun lineBySegment(s: Segment): Line {
+
+    val a = s.end.x - s.begin.x
+    val b = s.end.y - s.begin.y
+
+    val c = Math.atan2(b, a)
+
+    return Line(s.begin, c)
+}
 
 /**
  * Средняя
