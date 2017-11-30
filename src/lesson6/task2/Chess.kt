@@ -80,6 +80,7 @@ fun square(notation: String): Square {
 fun rookMoveNumber(start: Square, end: Square): Int {
 
     when {
+
         ((start.column !in 1..8) || (start.row !in 1..8) ||
                 (end.column !in 1..8) || (end.row !in 1..8)) -> throw IllegalArgumentException()
 
@@ -144,7 +145,22 @@ fun rookTrajectory(start: Square, end: Square): List<Square> {
  * Примеры: bishopMoveNumber(Square(3, 1), Square(6, 3)) = -1; bishopMoveNumber(Square(3, 1), Square(3, 7)) = 2.
  * Слон может пройти через клетку (6, 4) к клетке (3, 7).
  */
-fun bishopMoveNumber(start: Square, end: Square): Int = TODO()
+fun bishopMoveNumber(start: Square, end: Square): Int {
+
+    when {
+
+        ((start.column !in 1..8) || (start.row !in 1..8) ||
+                (end.column !in 1..8) || (end.row !in 1..8)) -> throw IllegalArgumentException()
+
+        ((start.column + start.row) % 2 != (end.column + end.row) % 2) -> return -1
+
+        (start == end) -> return 0
+
+        (Math.abs(start.column - end.column) == Math.abs(start.row - end.row)) -> return 1
+
+        else -> return 2
+    }
+}
 
 /**
  * Сложная
@@ -164,7 +180,32 @@ fun bishopMoveNumber(start: Square, end: Square): Int = TODO()
  *          bishopTrajectory(Square(1, 3), Square(6, 8)) = listOf(Square(1, 3), Square(6, 8))
  * Если возможно несколько вариантов самой быстрой траектории, вернуть любой из них.
  */
-fun bishopTrajectory(start: Square, end: Square): List<Square> = TODO()
+fun bishopTrajectory(start: Square, end: Square): List<Square> {
+
+    val amountMove = bishopMoveNumber(start, end)
+
+    when {
+        amountMove == -1 -> return listOf()
+
+        amountMove == 0 -> return listOf(Square(start.column, start.row))
+
+        amountMove == 1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
+
+        amountMove == 2 -> {
+
+            for (i in 1..8) {
+                for (j in 1..8) {
+                    if ((Math.abs(end.column - i) == Math.abs(end.row - j)) &&
+                            (Math.abs(start.column - i) == Math.abs(start.row - j))) {
+                        return listOf(Square(start.column, start.row), Square(i, j), Square(end.column, end.row))
+                    }
+                }
+            }
+        }
+        else -> throw IllegalArgumentException()
+    }
+    return listOf()
+}
 
 /**
  * Средняя
