@@ -3,6 +3,7 @@ package lesson4.task1
 
 import lesson1.task1.discriminant
 import lesson3.task1.isPrime
+import java.io.File.separator
 
 /**
  * Пример
@@ -304,4 +305,81 @@ fun roman(n: Int): String = TODO()
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(n: Int): String = TODO()
+fun russian(n: Int): String = TODO()/*{
+
+    val list1to9 = listOf("none", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять")
+    val list10to19 = listOf("десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать")
+    val list20to90 = listOf("none", "none", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто")
+    val list100to900 = listOf("none", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот")
+    val listThousands = listOf("none", "одна тысяча", "две тысячи", "три тысячи", "четыре тысячи", "пять тысяч", "шесть тысяч", "семь тысяч", "восемь тысяч", "девять тысяч")
+
+    var first = n%10 /** some supporting variable */
+    var second = n/10%10 /** one more supporting variable */
+    var third = n/100%10 /** third very important supporting variable */
+    var fouth = n/1000%10 /** because I love supporting variable */
+    var fifth = n/10000%10
+    var sixth = n/100000
+
+    val answer = mutableListOf<String>()
+
+    val i = when {
+        n < 1000 -> 1
+        n < 1000000 -> 2
+        else -> return ""
+    }
+
+
+    if (i == 1) {
+        if (second == 1) {
+            answer.add(list100to900[third])
+            answer.add(list10to19[first])
+        }
+        else {
+            answer.add(list100to900[third])
+            answer.add(list20to90[second])
+            answer.add(list1to9[first])
+        }
+        while ("none" in answer) answer.remove("none")
+        return answer.joinToString(separator = " ")
+    }
+
+    if (i == 2) {
+
+        if (second == 1 && fifth == 1) {
+            answer.add(list100to900[sixth])
+            answer.add(list10to19[fouth])
+            answer.add(list100to900[third])
+            answer.add(list10to19[first])
+        }
+        if (second == 1) {
+            answer.add(list100to900[sixth])
+            answer.add(list20to90[fifth])
+            answer.add(listThousands[fouth])
+            answer.add(list100to900[third])
+            answer.add(list10to19[first])
+        }
+        if (fifth == 1)
+        else {
+            answer.add(list100to900[sixth])
+            answer.add(list20to90[fifth])
+            answer.add(listThousands[fouth])
+            answer.add(list100to900[third])
+            answer.add(list20to90[second])
+            answer.add(list1to9[first])
+        }
+        while ("none" in answer) answer.remove("none")
+        return answer.joinToString(separator = " ")
+    }
+
+    /*if (i == 6) {
+        answer.add(list)
+        answer.add(listThousands[fouth])
+        answer.add(list100to900[third])
+        answer.add(list20to90[second])
+        answer.add(list1to9[first])
+        while ("none" in answer) answer.remove("none")
+        return answer.joinToString(separator = " ")
+    }*/
+
+    return n.toString()
+}*/
