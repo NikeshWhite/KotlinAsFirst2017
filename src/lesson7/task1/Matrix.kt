@@ -38,11 +38,12 @@ interface Matrix<E> {
  * height = высота, width = ширина, e = чем заполнить элементы.
  * Бросить исключение IllegalArgumentException, если height или width <= 0.
  */
-fun <E> createMatrix(height: Int, width: Int, e: E): Matrix<E> = TODO() /*{
+fun <E> createMatrix(height: Int, width: Int, e: E): Matrix<E> {
 
     if (height <= 0 || width <= 0) throw IllegalArgumentException()
-    }
-}*/
+
+    return MatrixImpl(height, width, e)
+}
 
 /**
  * Средняя сложность
@@ -51,20 +52,49 @@ fun <E> createMatrix(height: Int, width: Int, e: E): Matrix<E> = TODO() /*{
  */
 class MatrixImpl<E>(override val height: Int, override val width: Int, e: E) : Matrix<E> {
 
-    override fun get(row: Int, column: Int): E  = TODO()
+    private val list = mutableListOf<E>()
+    init {
+        for (i in 0..height * width) run {
+            list.add(e)
+        }
+    }
 
-    override fun get(cell: Cell): E  = TODO()
+    override fun get(row: Int, column: Int): E = list[width * row + column]
+
+    override fun get(cell: Cell): E = list[cell.row * width + cell.column]
 
     override fun set(row: Int, column: Int, value: E) {
-        TODO()
+        list[width * row + column] = value
     }
 
     override fun set(cell: Cell, value: E) {
-        TODO()
+        list[cell.row * width + cell.column] = value
     }
 
-    override fun equals(other: Any?) = TODO()
+    override fun equals(other: Any?): Boolean {
 
-    override fun toString(): String = TODO()
+        if (other is MatrixImpl<*> && height == other.height && width == other.width) {
+            for (i in 0 until height) {
+                for (j in 0 until width) {
+                    if (other[i, j] == this[i, j]) return true
+                }
+            }
+            return false
+        }
+        return false
+    }
+
+    override fun toString(): String {
+
+        val answer = StringBuilder()
+
+        for (i in 0 until height) {
+            for (j in 0 until width) {
+                answer.append(this[i, j])
+            }
+            answer.append("\t")
+        }
+        return "$answer"
+    }
 }
 
