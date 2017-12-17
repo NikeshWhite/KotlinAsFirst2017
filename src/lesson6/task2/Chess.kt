@@ -47,9 +47,7 @@ fun square(notation: String): Square {
 
     val column = (mas.indexOf(parts[1]) + 1)
 
-    if (parts.size != 4) throw IllegalArgumentException()
-    if (parts[1] !in mas) throw IllegalArgumentException()
-    if (parts[2].toInt() !in 1..8) throw IllegalArgumentException()
+    if ((parts.size != 4) || (parts[1] !in mas) || (parts[2].toInt() !in 1..8)) throw IllegalArgumentException()
 
     return Square(column, parts[2].toInt())
 }
