@@ -2,6 +2,7 @@
 package lesson6.task1
 
 import lesson1.task1.sqr
+import java.lang.Math.*
 
 /**
  * Точка на плоскости
@@ -215,7 +216,28 @@ fun findNearestCirclePair(vararg circles: Circle): Pair<Circle, Circle> = TODO()
  * (построить окружность по трём точкам, или
  * построить окружность, описанную вокруг треугольника - эквивалентная задача).
  */
-fun circleByThreePoints(a: Point, b: Point, c: Point): Circle = TODO()
+fun circleByThreePoints(a: Point, b: Point, c: Point): Circle {
+
+    val x12 = a.x - b.x
+    val x23 = b.x - c.x
+    val x31 = c.x - a.x
+
+    val y12 = a.y - b.y
+    val y23 = b.y - c.y
+    val y31 = c.y - a.y
+
+    val z1 = sqr(a.x) + sqr(a.y)
+    val z2 = sqr(b.x) + sqr(b.y)
+    val z3 = sqr(c.x) + sqr(c.y)
+
+    val n = -(y12 * z3 + y23 * z1 + y31 * z2)/2 * (x12 * y31 - y12 * x31)
+    val m = (x12 * z3 + x23 * z1 + x31 * z2)/2 * (x12 * y31 - y12 * x31)
+
+    val radius = Math.sqrt(sqr(a.x - n) + sqr(a.y - m))
+
+    return Circle(Point(n, m), radius)
+
+}
 
 /**
  * Очень сложная
