@@ -44,12 +44,11 @@ fun square(notation: String): Square {
 
     val parts = notation.split("")
     val mas = listOf("a", "b", "c", "d", "e", "f", "g", "h")
-
     val column = (mas.indexOf(parts[1]) + 1)
 
-    if ((parts.size != 4) || (parts[1] !in mas) || (parts[2].toInt() !in 1..8)) throw IllegalArgumentException()
+    if ((notation.length != 2) || (notation[0] !in 'a'..'h') || (notation[1] !in '1'..'8')) throw IllegalArgumentException()
 
-    return Square(column, parts[2].toInt())
+    return Square(column, notation[1].toInt() - '0'.toInt())
 }
 
 /**
