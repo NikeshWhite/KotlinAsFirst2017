@@ -103,7 +103,7 @@ fun generateSnake(height: Int, width: Int): Matrix<Int> = TODO()
  * 4 5 6      8 5 2
  * 7 8 9      9 6 3
  */
-fun <E> rotate(matrix: Matrix<E>): Matrix<E> {
+fun <E> rotate(matrix: Matrix<E>): Matrix<E> = TODO()/*{
 
     if (matrix.width < 1 || matrix.height < 1) return matrix
     val result = createMatrix(height = matrix.width, width = matrix.height, e = matrix[0, 0])
@@ -113,7 +113,7 @@ fun <E> rotate(matrix: Matrix<E>): Matrix<E> {
         }
     }
     return result
-}
+}*/
 
 /**
  * Сложная
