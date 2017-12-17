@@ -230,13 +230,12 @@ fun circleByThreePoints(a: Point, b: Point, c: Point): Circle {
     val z2 = sqr(b.x) + sqr(b.y)
     val z3 = sqr(c.x) + sqr(c.y)
 
-    val n = -(y12 * z3 + y23 * z1 + y31 * z2)/2 * (x12 * y31 - y12 * x31)
-    val m = (x12 * z3 + x23 * z1 + x31 * z2)/2 * (x12 * y31 - y12 * x31)
+    val n = -(y12 * z3 + y23 * z1 + y31 * z2)/(2 * (x12 * y31 - y12 * x31))
+    val m = (x12 * z3 + x23 * z1 + x31 * z2)/(2 * (x12 * y31 - y12 * x31))
 
     val radius = Math.sqrt(sqr(a.x - n) + sqr(a.y - m))
 
     return Circle(Point(n, m), radius)
-
 }
 
 /**

@@ -256,27 +256,7 @@ fun kingMoveNumber(start: Square, end: Square): Int {
  *          kingTrajectory(Square(3, 5), Square(6, 2)) = listOf(Square(3, 5), Square(4, 4), Square(5, 3), Square(6, 2))
  * Если возможно несколько вариантов самой быстрой траектории, вернуть любой из них.
  */
-fun kingTrajectory(start: Square, end: Square): List<Square> {
-
-    val amountMove = bishopMoveNumber(start, end)
-
-    when {
-        amountMove == 0 -> return listOf(Square(start.column, start.row))
-
-        amountMove == 1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
-
-        amountMove > 1 -> {
-
-            while (amountMove > 0) {
-                mutableListOf(start, end)
-
-            }
-        }
-        else -> throw IllegalArgumentException()
-    }
-    return listOf()
-
-}
+fun kingTrajectory(start: Square, end: Square): List<Square> = TODO()
 
 /**
  * Сложная
