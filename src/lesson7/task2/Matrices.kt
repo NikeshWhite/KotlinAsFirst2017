@@ -83,13 +83,11 @@ fun generateRectangles(height: Int, width: Int): Matrix<Int> {
     var content = 2
 
     when {
-        height == 2 -> values = 1
-        width == 2 -> values = 1
         maxOf(height, width) % 2 == 0 -> values = maxOf(height, width) / 2
         else -> values = maxOf(height, width) / 2 + 1
     }
 
-    for (a in 1..values) {
+    (1..values).forEach {
 
         for (i in (content - 1)..(height - content + 1)) {
 
