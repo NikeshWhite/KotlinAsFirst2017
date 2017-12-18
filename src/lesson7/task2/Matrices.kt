@@ -87,11 +87,11 @@ fun generateRectangles(height: Int, width: Int): Matrix<Int> {
         else -> values = maxOf(height, width) / 2 + 1
     }
 
-    (1..values).forEach {
+    for (a in 1..values) {
 
-        for (i in (content - 1)..(height - content + 1)) {
+        for (i in (content - 1)..(height - content)) {
 
-            for (j in (content - 1)..(width - content + 1)) {
+            for (j in (content - 1)..(width - content)) {
                 matrix[i, j] = content
             }
         }
