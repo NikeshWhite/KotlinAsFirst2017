@@ -79,7 +79,6 @@ fun generateRectangles(height: Int, width: Int): Matrix<Int> {
 
     val matrix = createMatrix(height, width, 1)
     val values: Int
-
     var content = 2
 
     when {
@@ -88,19 +87,15 @@ fun generateRectangles(height: Int, width: Int): Matrix<Int> {
     }
 
     for (a in 1..values) {
-
         for (i in (content - 1)..(height - content)) {
-
             for (j in (content - 1)..(width - content)) {
                 matrix[i, j] = content
             }
         }
         content++
     }
-
     return matrix
 }
-
 /**
  * Сложная
  *

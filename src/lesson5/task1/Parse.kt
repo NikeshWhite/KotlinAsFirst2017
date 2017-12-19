@@ -71,7 +71,7 @@ fun dateStrToDigit(str: String): String {
     val parts = str.split(" ")
 
     val day: String
-    val month: String
+    val month: Int
     val year: String
 
     val mas = listOf("января", "февраля", "марта", "апреля", "мая", "июня",
@@ -87,13 +87,13 @@ fun dateStrToDigit(str: String): String {
 
         day = parts[0]
         year = parts[2]
-        month = (mas.indexOf(parts[1]) + 1).toString()
+        month = (mas.indexOf(parts[1]) + 1)
 
     } catch (e: NumberFormatException) {
         return ""
     }
 
-    return String.format("%02d.%02d.%d", day.toInt(), month.toInt(), year.toInt())
+    return String.format("%02d.%02d.%d", day.toInt(), month, year.toInt())
 }
 
 /**
@@ -194,13 +194,11 @@ fun plusMinus(expression: String): Int = TODO()
 fun firstDuplicateIndex(str: String): Int {
 
     val parts = str.toLowerCase().split(" ")
-
     var answer = 0
 
     for (i in 0 until parts.size - 1) {
 
         if (parts[i] == parts[i + 1]) {
-
             return answer
         }
         answer += parts[i].length + 1
@@ -229,9 +227,10 @@ fun mostExpensive(description: String): String {
         for (i in 0 until parts.size) {
 
             val partsSecond = parts[i].split(" ")
+            val m = partsSecond[1]
 
-            if (partsSecond[1].toDouble() >= max) {
-                max = partsSecond[1].toDouble()
+            if (m.toDouble() >= max) {
+                max = m.toDouble()
                 result = partsSecond[0]
             }
         }

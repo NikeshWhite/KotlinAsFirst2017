@@ -218,7 +218,6 @@ fun hasDifferentDigits(n: Int): Boolean = TODO()
  */
 fun squareSequenceDigit(n: Int): Int {
 
-    var s: Int
     var k = 0
     var i = 0
 
@@ -226,13 +225,12 @@ fun squareSequenceDigit(n: Int): Int {
 
     while (k < n) {
         i += 1
-        s = i*i
+        val s = i * i
         k += digitNumber(s)
     }
 
-    if (k == n) answer = i*i%10
-
-    else answer = i*i/Math.pow(10.0, (k-n).toDouble()).toInt()%10
+    if (k == n) answer = i * i % 10
+    else answer = i * i / Math.pow(10.0, (k - n).toDouble()).toInt() % 10
 
     return answer
 }
@@ -246,7 +244,6 @@ fun squareSequenceDigit(n: Int): Int {
  */
 fun fibSequenceDigit(n: Int): Int {
 
-    var s: Int
     var k = 0
     var i = 0
 
@@ -254,15 +251,12 @@ fun fibSequenceDigit(n: Int): Int {
 
     while (k < n) {
         i += 1
-        s = fib(i)
+        val s = fib(i)
         k += digitNumber(s)
     }
 
-    if (k == n) answer = fib(i)%10
-
-    else answer = fib(i)/Math.pow(10.0, (k-n).toDouble()).toInt()%10
+    if (k == n) answer = fib(i) % 10
+    else answer = fib(i) / Math.pow(10.0, (k - n).toDouble()).toInt() % 10
 
     return answer
 }
-
-//1

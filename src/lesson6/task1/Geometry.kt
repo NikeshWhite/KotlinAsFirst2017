@@ -115,9 +115,10 @@ fun diameter(vararg points: Point): Segment {
 
     for (i in points) {
         for (j in points) {
-            if (i.distance(j) > answer) {
 
-                answer = i.distance(j)
+            val s = i.distance(j)
+            if (s > answer) {
+                answer = s
                 answerPoint = Pair(i, j)
             }
         }

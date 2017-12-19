@@ -78,8 +78,7 @@ fun rookMoveNumber(start: Square, end: Square): Int {
 
     when {
 
-        ((start.column !in 1..8) || (start.row !in 1..8) ||
-                (end.column !in 1..8) || (end.row !in 1..8)) -> throw IllegalArgumentException()
+        (!start.inside()) || (!end.inside())  -> throw IllegalArgumentException()
 
         (start == end) -> return 0
 
@@ -107,13 +106,13 @@ fun rookTrajectory(start: Square, end: Square): List<Square> {
 
     val amountMove = rookMoveNumber(start, end)
 
-    when {
+    when (amountMove) {
 
-        amountMove == 0 -> return listOf(Square(start.column, start.row))
+        0 -> return listOf(Square(start.column, start.row))
 
-        amountMove == 1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
+        1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
 
-        amountMove == 2 -> return listOf(Square(start.column, start.row), Square(start.column, end.row), Square(end.column, end.row))
+        2 -> return listOf(Square(start.column, start.row), Square(start.column, end.row), Square(end.column, end.row))
 
         else -> throw IllegalArgumentException()
     }
@@ -146,8 +145,7 @@ fun bishopMoveNumber(start: Square, end: Square): Int {
 
     when {
 
-        ((start.column !in 1..8) || (start.row !in 1..8) ||
-                (end.column !in 1..8) || (end.row !in 1..8)) -> throw IllegalArgumentException()
+        (!start.inside()) || (!end.inside())  -> throw IllegalArgumentException()
 
         ((start.column + start.row) % 2 != (end.column + end.row) % 2) -> return -1
 
@@ -181,14 +179,14 @@ fun bishopTrajectory(start: Square, end: Square): List<Square> {
 
     val amountMove = bishopMoveNumber(start, end)
 
-    when {
-        amountMove == -1 -> return listOf()
+    when (amountMove) {
+        -1 -> return listOf()
 
-        amountMove == 0 -> return listOf(Square(start.column, start.row))
+        0 -> return listOf(Square(start.column, start.row))
 
-        amountMove == 1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
+        1 -> return listOf(Square(start.column, start.row), Square(end.column, end.row))
 
-        amountMove == 2 -> {
+        2 -> {
 
             for (i in 1..8) {
                 for (j in 1..8) {

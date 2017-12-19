@@ -132,9 +132,8 @@ fun center(list: MutableList<Double>): MutableList<Double> {
 
     val average = mean(list)
 
-    if (list.isNotEmpty()) {
         for (i in 0 until list.size) list[i] -= average
-    }
+
     return list
 }
 
@@ -185,17 +184,10 @@ fun factorize(n: Int): List<Int> {
     while (k <= num) {
         k += 1
 
-        if (isPrime(n)) {
-            list += n
-            break
-        }
-
-        else {
-            if ((isPrime(k)) && num % k == 0) {
-                num /= k
-                list += k
-                k = 1
-            }
+        if (num % k == 0) {
+            num /= k
+            list += k
+            k = 1
         }
     }
     return list
